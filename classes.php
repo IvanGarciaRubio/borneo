@@ -102,7 +102,7 @@ class test{
 
 /*---------------------------------------LISTADO DE CONTACTOS-------------------------------------------------------------------*/
     public function GetContact() {
-        $sql = "SELECT * FROM contactos ORDER BY id ASC;";
+        $sql = "SELECT * FROM contactos ORDER BY fecha DESC;";
         try {
             $mysql= mysqli_query($GLOBALS["db_link"],$sql);
             $contactos=array();
