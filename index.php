@@ -83,10 +83,11 @@ $app->post('/owned/add', function (Request $request, Response $response,$args) {
     $direccion = $data["direccion"];
     $ciudad = $data["ciudad"];
     $comunidadAutonoma = $data["comunidad_autonoma"];
+    $telefono = $data["telefono"];
     
     $add=$variable->AddPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
     $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
-    $direccion, $ciudad, $comunidadAutonoma);
+    $direccion, $ciudad, $comunidadAutonoma, $telefono);
     $response->getBody()->write(json_encode($add));
     return $response;
 });
@@ -116,12 +117,13 @@ $app->post('/owned/update/{id}', function (Request $request, Response $response,
     $direccion = $data["direccion"];
     $ciudad = $data["ciudad"];
     $comunidadAutonoma = $data["comunidad_autonoma"];
+    $telefono = $data["telefono"];
     $id = $args['id'];
     
     $variable= new test();
     $add=$variable->ModifyPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
     $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
-    $direccion, $ciudad, $comunidadAutonoma, $id);
+    $direccion, $ciudad, $comunidadAutonoma, $telefono, $id);
 
     $response->getBody()->write(json_encode($add));
     return $response;

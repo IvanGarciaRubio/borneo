@@ -37,7 +37,7 @@ class test{
 /*---------------------------------------AÑADIR PROPIEDADES-----------------------------------------------------------------------*/
     public function AddPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
     $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
-    $direccion, $ciudad, $comunidadAutonoma) {
+    $direccion, $ciudad, $comunidadAutonoma, $telefono) {
         if(!isset($imagen)){
 			$imagen=""; 
 		}
@@ -64,10 +64,10 @@ class test{
 
         $sql = "INSERT INTO addpropiedad (nombre, descripcion, personas, access, salas_reuniones, reception, eventos_network, terraza, cafe_relax, 
         seguridad, limpieza, cer_energetica, paqueteria, parking, wifi, coworking, tarifa, tipo_propiedad, 
-        imagen, direccion, ciudad, comunidad_autonoma) 
+        imagen, direccion, ciudad, comunidad_autonoma, telefono) 
         VALUES('$nombre','$descripcion','$personas','$acceso','$salasReuniones','$recepcion', '$eventosNetwork',
         '$terraza','$cafeRelax','$seguridad','$limpieza', '$certificado', '$paqueteria', '$parking', '$wifi', '$coworking',
-        '$tarifa','$tipoPropiedad','$imagen','$direccion','$ciudad','$comunidadAutonoma');";
+        '$tarifa','$tipoPropiedad','$imagen','$direccion','$ciudad','$comunidadAutonoma', '$telefono');";
         
         try {
             $mysql= mysqli_query($GLOBALS["db_link"],$sql);
@@ -80,14 +80,14 @@ class test{
 /*---------------------------------MODIFICAR PROPIEDADES---------------------------------------------------------------------------*/
     public function ModifyPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
     $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
-    $direccion, $ciudad, $comunidadAutonoma, $id) {
+    $direccion, $ciudad, $comunidadAutonoma, $telefono, $id) {
 
         $sql = "UPDATE addpropiedad SET nombre = '$nombre', descripcion = '$descripcion', personas = '$personas', 
         access = '$acceso', salas_reuniones = '$salasReuniones',reception = '$recepcion', 
         eventos_network = '$eventosNetwork', terraza = '$terraza', cafe_relax = '$cafeRelax', seguridad = '$seguridad', 
         limpieza = '$limpieza', cer_energetica = '$certificado', paqueteria = '$paqueteria', parking = '$parking', wifi = '$wifi',
         coworking = '$coworking', tarifa = '$tarifa',tipo_propiedad = '$tipoPropiedad', imagen = '$imagen', 
-        direccion = '$direccion',ciudad = '$ciudad', comunidad_autonoma = '$comunidadAutonoma' WHERE id= ".$id;
+        direccion = '$direccion',ciudad = '$ciudad', comunidad_autonoma = '$comunidadAutonoma', telefono='$telefono' WHERE id= ".$id;
         
         try {
             $mysql= mysqli_query($GLOBALS["db_link"],$sql);
