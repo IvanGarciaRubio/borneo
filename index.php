@@ -30,6 +30,7 @@ $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
 $app->addErrorMiddleware(true, true, true);
+
 $app->setBasePath("/borneo/index.php");
 
 /*---------------------------------------LISTADO DE PROPIEDADES-------------------------------------------------------------------------*/
@@ -71,6 +72,11 @@ $app->post('/owned/add', function (Request $request, Response $response,$args) {
     $cafeRelax = $data["cafe_relax"];
     $seguridad = $data["seguridad"];
     $limpieza = $data["limpieza"];
+    $certificado = $data["cer_energetica"];
+    $paqueteria = $data["paqueteria"];
+    $parking = $data["parking"];
+    $wifi = $data["wifi"];
+    $coworking = $data["coworking"];
     $tarifa = $data["tarifa"];
     $tipoPropiedad = $data["tipo_propiedad"];
     $imagen = $data["imagen"];
@@ -78,7 +84,9 @@ $app->post('/owned/add', function (Request $request, Response $response,$args) {
     $ciudad = $data["ciudad"];
     $comunidadAutonoma = $data["comunidad_autonoma"];
     
-    $add=$variable->AddPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, $cafeRelax, $seguridad, $limpieza, $tarifa, $tipoPropiedad, $imagen, $direccion, $ciudad, $comunidadAutonoma);
+    $add=$variable->AddPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
+    $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
+    $direccion, $ciudad, $comunidadAutonoma);
     $response->getBody()->write(json_encode($add));
     return $response;
 });
@@ -86,29 +94,34 @@ $app->post('/owned/add', function (Request $request, Response $response,$args) {
 /*---------------------------------MODIFICAR PROPIEDADES--------------------------------------------------------------------------*/
 $app->post('/owned/update/{id}', function (Request $request, Response $response,$args) {
     $data = (array)$request->getParsedBody();
-    $nombre = $data['nombre'];
-    $descripcion = $data['descripcion'];
-    $personas = $data['personas'];
-    $acceso = $data['access'];
-    $salasReuniones = $data['salas_reuniones'];
-    $recepcion = $data['reception'];
-    $eventosNetwork = $data['eventos_network'];
-    $terraza = $data['terraza'];
-    $cafeRelax = $data['cafe_relax'];
-    $seguridad = $data['seguridad'];
-    $limpieza = $data['limpieza'];
-    $tarifa = $data['tarifa'];
-    $tipoPropiedad = $data['tipo_propiedad'];
-    $imagen = $data['imagen'];
-    $direccion = $data['direccion'];
-    $ciudad = $data['ciudad'];
-    $comunidadAutonoma = $data['comunidad_autonoma'];
+    $nombre = $data["nombre"];
+    $descripcion = $data["descripcion"];
+    $personas = $data["personas"];
+    $acceso = $data["access"];
+    $salasReuniones = $data["salas_reuniones"];
+    $recepcion = $data["reception"];
+    $eventosNetwork = $data["eventos_network"];
+    $terraza = $data["terraza"];
+    $cafeRelax = $data["cafe_relax"];
+    $seguridad = $data["seguridad"];
+    $limpieza = $data["limpieza"];
+    $certificado = $data["cer_energetica"];
+    $paqueteria = $data["paqueteria"];
+    $parking = $data["parking"];
+    $wifi = $data["wifi"];
+    $coworking = $data["coworking"];
+    $tarifa = $data["tarifa"];
+    $tipoPropiedad = $data["tipo_propiedad"];
+    $imagen = $data["imagen"];
+    $direccion = $data["direccion"];
+    $ciudad = $data["ciudad"];
+    $comunidadAutonoma = $data["comunidad_autonoma"];
     $id = $args['id'];
     
     $variable= new test();
-    $add=$variable->ModifyPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,
-    $terraza, $cafeRelax, $seguridad, $limpieza, $tarifa, $tipoPropiedad, $imagen, $direccion, 
-    $ciudad, $comunidadAutonoma, $id);
+    $add=$variable->ModifyPropiedades($nombre, $descripcion, $personas, $acceso, $salasReuniones, $recepcion, $eventosNetwork,$terraza, 
+    $cafeRelax, $seguridad, $limpieza, $certificado, $paqueteria,$parking, $wifi, $coworking, $tarifa, $tipoPropiedad, $imagen, 
+    $direccion, $ciudad, $comunidadAutonoma, $id);
 
     $response->getBody()->write(json_encode($add));
     return $response;
